@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surprise!</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1a1a2e;
+      color: #eaeaea;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+    h1 { margin-bottom: 20px; }
+    .hidden { display: none; }
+    #surpriseBox {
+      font-size: 1.5rem;
+      color: #e94560;
+      animation: popIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #0f3460;
+      color: white;
+      transition: background 0.3s, transform 0.1s;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    button:hover { background-color: #e94560; }
+    button:active { transform: scale(0.95); }
+    @keyframes popIn {
+      0% { opacity: 0; transform: scale(0.5); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="title">Hey Dad...</h1>
+  <button id="revealBtn" onclick="showSurprise()">Click Here</button>
+
+  <div id="surpriseBox" class="hidden">
+    <h2>Happy Father's Day! 🎉</h2>
+    <p>Thanks for everything you do.</p>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <script>
+    function showSurprise() {
+      // Hide button and reveal message
+      document.getElementById('revealBtn').classList.add('hidden');
+      document.getElementById('surpriseBox').classList.remove('hidden');
+      
+      // Fire confetti
+      confetti({
+        particleCount: 150,
+        spread: 90,
+        origin: { y: 0.6 },
+        colors: ['#e94560', '#0f3460', '#ffffff', '#f2a365']
+      });
+    }
+  </script>
+
+</body>
+</html>
